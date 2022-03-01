@@ -1,0 +1,144 @@
+/*Base*/
+:root{
+    --main-success-color: #008000;
+    --semi-success-color: #8ec391;
+    --main-warning-color: #ffa500;
+    --semi-warning-color: #f4d291;
+    --main-error-color: #ff0000;
+    --semi-error-color: #f49091;
+    --text-color: white;
+}
+*{
+    box-sizing: inherit;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+body{
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 62.5%;
+    overflow: hidden;
+}
+.button-group{
+    display: flex;
+    flex-wrap: wrap;
+}
+.button-group button{
+    width: 200px;
+    height: 40px;
+    margin: 10px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    color: var(--text-color);
+}
+button.success-button{
+    background-color: var(--main-success-color);
+}
+button.warning-button{
+    background-color: var(--main-warning-color);
+}
+button.error-button{
+    background-color: var(--main-error-color);
+}
+.notification-group{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.notification{
+    width: 300px;
+    height: 60px;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+    animation: toast_show 2s ease forwards;
+}
+
+.toast_hide{
+    animation: toast_hide 2s ease forwards;
+}
+.notification-icon{
+    font-size: 1.8rem;
+}
+.notification > span{
+    margin: 0 5px;
+}
+.bottom-line{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    animation: countdown 3s ease forwards;
+    animation-delay: 1s;
+}
+.bottom-line.success{
+    background-color: var(--main-success-color);
+}
+.bottom-line.warning{
+    background-color: var(--main-warning-color);
+}
+.bottom-line.error{
+    background-color: var(--main-error-color);
+}
+
+@keyframes countdown {
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 0%;
+    }
+}
+.notification.success{
+    background-color: var(--semi-success-color);
+    border-left: 7px solid var(--main-success-color);
+}
+.notification.warning{
+    background-color: var(--semi-warning-color);
+    border-left: 7px solid var(--main-warning-color);
+}
+.notification.error{
+    background-color: var(--semi-error-color);
+    border-left: 7px solid var(--main-error-color);
+}
+@keyframes toast_show {
+    0%{
+        transform: translateX(100%);
+    }
+    33%{
+        transform: translateX(-10%);
+    }
+    66%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+@keyframes toast_hide {
+    0%{
+        transform: translateX(0%);
+    }
+    50%{
+        transform: translateX(-10%);
+    }
+    100%{
+        transform: translateX(120%);
+    }
+}
